@@ -10,6 +10,9 @@ google-ads-keys-quynhleayp.md
 # Ignored root standalone debug scripts containing hardcoded keys
 /*.js
 
+# ===== EXTENSION BUNDLES (Không commit các file .mcpb) =====
+*.mcpb
+
 # ===== HIỆU NĂNG: Không commit node_modules (rất nặng) =====
 node_modules/
 package-lock.json
@@ -18,4 +21,3 @@ package-lock.json
 .DS_Store
 *.log
 mcp_debug.log
-scratch.mcpb
