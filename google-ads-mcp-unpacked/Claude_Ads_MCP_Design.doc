@@ -1,0 +1,19 @@
+Google Ads API Integration Design Document
+===========================================
+
+Tool Name: Claude Ads MCP Integration
+Tool Type: Internal Reporting & Performance Analytics Tool
+Target Audience: Internal Users / Account Manager
+Integration Architecture: Model Context Protocol (MCP) via Stdio Server for Claude Desktop
+
+Overview:
+---------
+This tool is an internal API connector developed to interface Google Ads API with Claude Desktop application.
+It provides read-only performance reporting (impressions, clicks, spend, CTR, ROAS, keyword quality scores)
+and basic internal campaign adjustments (enabling/pausing campaigns and updating daily budgets with safety limits).
+
+Data Handling & Privacy:
+------------------------
+- No external user data is collected, stored, or shared.
+- The tool operates strictly locally on the user's desktop machine.
+- All requests are executed directly between the user's machine and Google Ads API.

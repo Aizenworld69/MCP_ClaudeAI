@@ -1,0 +1,21 @@
+# ===== BẢO MẬT: Không commit các chìa khóa & token API =====
+.env
+*.env.*
+google-key.json
+*-key.json
+*.pem
+*.key
+google-ads-keys-quynhleayp.md
+
+# Ignored root standalone debug scripts containing hardcoded keys
+/*.js
+
+# ===== HIỆU NĂNG: Không commit node_modules (rất nặng) =====
+node_modules/
+package-lock.json
+
+# ===== CÁC TỆP TẠM & SYSTEM =====
+.DS_Store
+*.log
+mcp_debug.log
+scratch.mcpb

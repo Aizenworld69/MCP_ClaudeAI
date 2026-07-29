@@ -1,0 +1,61 @@
+{
+  "manifest_version": "0.1",
+  "name": "haravan-blog-mcp",
+  "display_name": "Haravan Blog Manager",
+  "version": "2.0.0",
+  "description": "Đăng, sửa, xóa, xem bài blog + quản lý blog + bình luận trên website Haravan qua Open API",
+  "author": {
+    "name": "User"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
+      "env": {
+        "HARAVAN_ACCESS_TOKEN": "${user_config.haravan_access_token}",
+        "HARAVAN_BLOG_ID": "${user_config.haravan_blog_id}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "list_blogs", "description": "Xem danh sách blog trên Haravan" },
+    { "name": "count_blogs", "description": "Đếm số blog" },
+    { "name": "get_blog", "description": "Xem chi tiết 1 blog" },
+    { "name": "create_blog", "description": "Tạo blog mới" },
+    { "name": "update_blog", "description": "Sửa thông tin blog" },
+    { "name": "delete_blog", "description": "Xóa blog" },
+    { "name": "list_articles", "description": "Xem danh sách bài blog" },
+    { "name": "count_articles", "description": "Đếm số bài viết trong blog" },
+    { "name": "get_article", "description": "Xem chi tiết 1 bài viết" },
+    { "name": "create_article", "description": "Đăng bài blog mới lên Haravan" },
+    { "name": "update_article", "description": "Sửa bài blog trên Haravan" },
+    { "name": "delete_article", "description": "Xóa bài blog trên Haravan" },
+    { "name": "list_comments", "description": "Xem danh sách bình luận" },
+    { "name": "count_comments", "description": "Đếm số bình luận" },
+    { "name": "get_comment", "description": "Xem chi tiết bình luận" },
+    { "name": "create_comment", "description": "Tạo bình luận mới" },
+    { "name": "update_comment", "description": "Sửa bình luận" },
+    { "name": "mark_comment_spam", "description": "Đánh dấu bình luận là spam" },
+    { "name": "mark_comment_not_spam", "description": "Bỏ đánh dấu spam" },
+    { "name": "approve_comment", "description": "Duyệt bình luận" },
+    { "name": "remove_comment", "description": "Xóa bình luận" },
+    { "name": "restore_comment", "description": "Khôi phục bình luận" }
+  ],
+  "user_config": {
+    "haravan_access_token": {
+      "type": "string",
+      "title": "Haravan Access Token",
+      "description": "Access Token lấy từ Haravan Open API (App riêng của bạn)",
+      "required": true,
+      "sensitive": true
+    },
+    "haravan_blog_id": {
+      "type": "string",
+      "title": "Blog ID mặc định",
+      "description": "ID của blog bạn muốn đăng bài vào (lấy qua tool list_blogs nếu chưa biết)",
+      "required": false
+    }
+  }
+}

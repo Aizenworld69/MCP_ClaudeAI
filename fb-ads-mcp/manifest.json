@@ -1,0 +1,65 @@
+{
+  "manifest_version": "0.1",
+  "name": "fb-ads-mcp",
+  "display_name": "Facebook Ads Manager",
+  "version": "1.0.0",
+  "description": "Quản lý báo cáo hiệu suất chiến dịch, nhóm quảng cáo, mẫu quảng cáo, ngân sách và bật/tắt quảng cáo Facebook Ads qua Meta Graph API",
+  "author": {
+    "name": "User"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/index.js"
+      ],
+      "env": {
+        "FB_ADS_ACCESS_TOKEN": "${user_config.fb_ads_access_token}",
+        "FB_AD_ACCOUNT_ID": "${user_config.fb_ad_account_id}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "list_ad_accounts",
+      "description": "Liệt kê danh sách tất cả các tài khoản quảng cáo Facebook Ads mà bạn có quyền quản lý"
+    },
+    {
+      "name": "get_ads_performance",
+      "description": "Lấy báo cáo chi tiết hiệu suất quảng cáo (chi phí spend, click, hiển thị, CPC, CPM, CTR) của các chiến dịch"
+    },
+    {
+      "name": "get_adsets_performance",
+      "description": "Lấy báo cáo chi tiết hiệu suất quảng cáo ở cấp độ các Nhóm quảng cáo (Ad Set)"
+    },
+    {
+      "name": "get_ads_creative_performance",
+      "description": "Lấy báo cáo hiệu suất chi tiết của từng Mẫu quảng cáo cụ thể (Ads/Creatives)"
+    },
+    {
+      "name": "toggle_campaign_status",
+      "description": "Bật hoặc Tắt (Tạm dừng) một chiến dịch quảng cáo cụ thể bằng ID chiến dịch"
+    },
+    {
+      "name": "update_campaign_budget",
+      "description": "Cập nhật ngân sách chi tiêu hàng ngày (Daily Budget) của một chiến dịch cụ thể"
+    }
+  ],
+  "user_config": {
+    "fb_ads_access_token": {
+      "type": "string",
+      "title": "Facebook Ads Access Token",
+      "description": "Access Token của Facebook (yêu cầu quyền ads_read, ads_management)",
+      "required": true,
+      "sensitive": true
+    },
+    "fb_ad_account_id": {
+      "type": "string",
+      "title": "Default Ad Account ID",
+      "description": "ID tài khoản quảng cáo mặc định (ví dụ: act_123456789). Nếu để trống MCP sẽ tự lấy tài khoản đầu tiên.",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "manifest_version": "0.1",
+  "name": "google-sheets-mcp",
+  "display_name": "Google Sheets Manager",
+  "version": "1.0.0",
+  "description": "Tạo, đọc, thêm, và cập nhật dữ liệu trên Google Sheets qua Google Sheets API sử dụng Service Account",
+  "author": {
+    "name": "User"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${user_config.google_application_credentials}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "create_spreadsheet", "description": "Tạo một file Google Sheets (bảng tính) mới trên Google Drive" },
+    { "name": "read_sheet_data", "description": "Đọc toàn bộ dữ liệu từ một dải ô (range) trong file Google Sheets" },
+    { "name": "append_sheet_data", "description": "Thêm các hàng dữ liệu mới vào cuối bảng tính hiện tại" },
+    { "name": "update_sheet_data", "description": "Cập nhật hoặc ghi đè dữ liệu vào một dải ô (range) cụ thể chỉ định trên bảng tính" }
+  ],
+  "user_config": {
+    "google_application_credentials": {
+      "type": "string",
+      "title": "Google Service Account Key File Path",
+      "description": "Đường dẫn tuyệt đối đến file JSON key của Google Service Account (ví dụ: C:\\path\\to\\key.json)",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "fb-fanpage-mcp",
+  "version": "1.0.0",
+  "description": "MCP server to post to a Facebook Fanpage via the Graph API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  }
+}

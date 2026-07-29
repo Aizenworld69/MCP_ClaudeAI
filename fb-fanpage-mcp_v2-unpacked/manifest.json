@@ -1,0 +1,66 @@
+{
+  "manifest_version": "0.1",
+  "name": "fb-fanpage-mcp",
+  "display_name": "Facebook Fanpage Manager",
+  "version": "2.0.0",
+  "description": "Quản lý bài viết, hình ảnh, bình luận, và chỉ số thống kê Fanpage qua Graph API",
+  "author": {
+    "name": "User"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
+      "env": {
+        "FB_PAGE_ID": "${user_config.fb_page_id}",
+        "FB_PAGE_ACCESS_TOKEN": "${user_config.fb_page_access_token}",
+        "FB_GRAPH_API_VERSION": "${user_config.fb_graph_api_version}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "get_page_info", "description": "Xem thông tin Fanpage" },
+    { "name": "list_posts", "description": "Lấy danh sách bài đăng" },
+    { "name": "create_post", "description": "Đăng bài viết hoặc hẹn giờ đăng lên Facebook Fanpage" },
+    { "name": "create_photo_post", "description": "Đăng bài kèm ảnh hoặc hẹn giờ đăng lên Facebook Fanpage" },
+    { "name": "delete_post", "description": "Xóa bài đăng trên Fanpage" },
+    { "name": "list_comments", "description": "Xem danh sách bình luận" },
+    { "name": "create_comment", "description": "Bình luận hoặc trả lời bình luận" },
+    { "name": "delete_comment", "description": "Xóa bình luận" },
+    { "name": "get_post_insights", "description": "Xem chỉ số bài đăng (Insights)" },
+    { "name": "hide_comment", "description": "Ẩn bình luận trên Fanpage" },
+    { "name": "unhide_comment", "description": "Hiện bình luận bị ẩn trên Fanpage" },
+    { "name": "like_comment", "description": "Thích bình luận của người dùng" },
+    { "name": "unlike_comment", "description": "Bỏ thích bình luận của người dùng" },
+    { "name": "list_conversations", "description": "Lấy danh sách các cuộc trò chuyện trong Inbox" },
+    { "name": "get_conversation_messages", "description": "Xem tin nhắn chi tiết của cuộc hội thoại" },
+    { "name": "send_inbox_message", "description": "Gửi tin nhắn trả lời khách hàng trong Inbox" },
+    { "name": "create_multi_photo_post", "description": "Đăng bài viết kèm nhiều hình ảnh lên Fanpage" },
+    { "name": "publish_video", "description": "Đăng video lên Fanpage" },
+    { "name": "get_page_insights", "description": "Xem các chỉ số thống kê của Fanpage" }
+  ],
+  "user_config": {
+    "fb_page_id": {
+      "type": "string",
+      "title": "Facebook Page ID",
+      "description": "ID của Fanpage bạn muốn đăng bài",
+      "required": true
+    },
+    "fb_page_access_token": {
+      "type": "string",
+      "title": "Facebook Page Access Token",
+      "description": "Access Token của Fanpage (lấy từ Graph API Explorer)",
+      "required": true,
+      "sensitive": true
+    },
+    "fb_graph_api_version": {
+      "type": "string",
+      "title": "Graph API Version",
+      "description": "Phiên bản Graph API, mặc định v21.0",
+      "required": false,
+      "default": "v21.0"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "manifest_version": "0.1",
+  "name": "google-search-console-mcp",
+  "display_name": "Google Search Console Manager",
+  "version": "1.0.0",
+  "description": "Quản lý sitemaps, kiểm tra tình trạng indexing của URL, và truy vấn hiệu suất tìm kiếm (clicks, impressions) qua Google Search Console API",
+  "author": {
+    "name": "User"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
+      "env": {
+        "GSC_CLIENT_ID": "${user_config.gsc_client_id}",
+        "GSC_CLIENT_SECRET": "${user_config.gsc_client_secret}",
+        "GSC_REFRESH_TOKEN": "${user_config.gsc_refresh_token}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "list_sites", "description": "Liệt kê các site/property bạn có quyền truy cập" },
+    { "name": "search_analytics", "description": "Query clicks, impressions, CTR, average position theo dimensions" },
+    { "name": "inspect_url", "description": "Kiểm tra tình trạng index của một URL cụ thể" },
+    { "name": "list_sitemaps", "description": "Liệt kê các sitemap đã submit" },
+    { "name": "submit_sitemap", "description": "Gửi một sitemap mới lên Google Search Console" },
+    { "name": "delete_sitemap", "description": "Xóa một sitemap đã submit khỏi Google Search Console" },
+    { "name": "add_site", "description": "Thêm một site/property mới vào Google Search Console" },
+    { "name": "delete_site", "description": "Xóa một site/property khỏi danh sách quản lý của Google Search Console" }
+  ],
+  "user_config": {
+    "gsc_client_id": {
+      "type": "string",
+      "title": "Google Client ID",
+      "description": "OAuth 2.0 Client ID từ Google Cloud Console",
+      "required": true
+    },
+    "gsc_client_secret": {
+      "type": "string",
+      "title": "Google Client Secret",
+      "description": "OAuth 2.0 Client Secret từ Google Cloud Console",
+      "required": true,
+      "sensitive": true
+    },
+    "gsc_refresh_token": {
+      "type": "string",
+      "title": "Google Refresh Token",
+      "description": "Refresh Token lấy bằng cách chạy script npm run auth",
+      "required": true,
+      "sensitive": true
+    }
+  }
+}

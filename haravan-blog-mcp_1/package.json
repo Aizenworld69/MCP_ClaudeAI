@@ -1,0 +1,14 @@
+{
+  "name": "haravan-blog-mcp",
+  "version": "1.0.0",
+  "description": "MCP server to manage blog posts on a Haravan store via Open API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  }
+}
